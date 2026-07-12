@@ -1781,9 +1781,14 @@ button {
 
   .dp-stage-copy { width: 100%; }
   .dp-status-chip { font-size: 10px; }
-  .dp-stage h1 { margin-top: 20px; font-size: 42px; }
-  .dp-stage-lead { font-size: 15px; line-height: 1.75; }
-  .dp-stage-sub { font-size: 13px; }
+  .dp-stage-copy,
+  .dp-stage h1,
+  .dp-stage-lead,
+  .dp-stage-sub,
+  .dp-live-console { min-width: 0; max-width: 100%; }
+  .dp-stage h1 { margin-top: 20px; font-size: 38px; line-height: 1.12; overflow-wrap: anywhere; }
+  .dp-stage-lead { font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
+  .dp-stage-sub { font-size: 13px; overflow-wrap: anywhere; }
   .dp-stage-actions { gap: 17px; }
   .dp-primary-action { min-height: 45px; padding: 0 17px; }
 
@@ -1871,6 +1876,12 @@ button {
   .feature-grid,
   .dp-value-grid { grid-template-columns: 1fr; }
   .vp-doc table { display: block; overflow-x: auto; }
+}
+
+@media (max-width: 400px) {
+  .dp-stage { padding-right: 18px; padding-left: 18px; }
+  .dp-stage h1 { font-size: 34px; }
+  .dp-stage-actions { gap: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
