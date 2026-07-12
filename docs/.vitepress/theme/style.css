@@ -546,6 +546,12 @@ button {
   color: var(--dp-cyan);
 }
 
+.dp-generated-card__top img {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+}
+
 .dp-generated-card__top span {
   padding: 2px 6px;
   border: 1px solid rgba(121, 230, 162, 0.32);
@@ -679,6 +685,8 @@ button {
 .dp-service-table i.is-green { background: var(--dp-green); box-shadow: 0 0 8px rgba(121, 230, 162, 0.5); }
 .dp-service-table i.is-cyan { background: var(--dp-cyan); box-shadow: 0 0 8px rgba(49, 215, 232, 0.5); }
 .dp-service-table i.is-blue { background: var(--dp-blue); box-shadow: 0 0 8px rgba(103, 156, 255, 0.5); }
+.dp-service-table i.is-amber { background: var(--dp-amber); box-shadow: 0 0 8px rgba(242, 189, 104, 0.5); }
+.dp-service-table i.is-red { background: #ef6b73; box-shadow: 0 0 8px rgba(239, 107, 115, 0.5); }
 
 .dp-console-foot {
   display: flex;
@@ -870,6 +878,10 @@ button {
   background: #0b0f15;
 }
 
+.dp-capabilities-section .dp-section-intro {
+  align-items: center;
+}
+
 .dp-section-intro--light h2 {
   color: #f1f5f8;
 }
@@ -901,10 +913,6 @@ button {
   overflow: hidden;
   background: #10161f;
   transition: background 180ms ease;
-}
-
-.dp-capability-grid article.is-wide {
-  grid-column: span 2;
 }
 
 .dp-capability-grid article:hover {
@@ -1016,6 +1024,40 @@ button {
   font-size: 9px;
 }
 
+.dp-screenshot-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dp-screenshot-section--backend {
+  background: #0b0f15;
+  color: #f1f5f8;
+}
+
+.dp-screenshot-section--backend .dp-screenshot-frame {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dp-screenshot-section--backend .dp-screenshot-copy {
+  grid-column: 2;
+}
+
+.dp-screenshot-section--backend .dp-screenshot-copy > span,
+.dp-screenshot-section--backend .dp-screenshot-copy > div svg {
+  color: var(--dp-cyan);
+}
+
+.dp-screenshot-section--backend .dp-screenshot-copy h2 {
+  color: #f1f5f8;
+}
+
+.dp-screenshot-section--backend .dp-screenshot-copy > p,
+.dp-screenshot-section--backend .dp-screenshot-copy > div {
+  color: #95a5b4;
+}
+
 .dp-screenshot-empty {
   display: grid;
   place-items: center;
@@ -1043,11 +1085,24 @@ button {
 }
 
 .dp-docs-route {
-  border-top: 1px solid rgba(169, 189, 210, 0.12);
+  border-top: 1px solid #d9e2e8;
+  background: #f3f6f8;
+}
+
+.dp-docs-route .dp-section-intro--light > span {
+  color: #087f8c;
+}
+
+.dp-docs-route .dp-section-intro--light h2 {
+  color: #101820;
 }
 
 .dp-docs-route .dp-section-intro {
   grid-template-columns: 190px 1fr;
+}
+
+.dp-docs-route .dp-doc-links {
+  margin-top: 28px;
 }
 
 .dp-doc-links {
@@ -1055,8 +1110,8 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   margin-top: 50px;
-  border: 1px solid var(--dp-line);
-  background: var(--dp-line);
+  border: 1px solid #cbd5dd;
+  background: #cbd5dd;
 }
 
 .dp-doc-links a {
@@ -1066,12 +1121,12 @@ button {
   align-items: center;
   min-height: 140px;
   padding: 25px;
-  background: #10161f;
+  background: #ffffff;
   transition: background 160ms ease;
 }
 
 .dp-doc-links a:hover {
-  background: #17212c;
+  background: #eef7f8;
 }
 
 .dp-doc-links a > span {
@@ -1086,19 +1141,19 @@ button {
 }
 
 .dp-doc-links strong {
-  color: #e9eff4;
+  color: #172435;
   font-size: 16px;
 }
 
 .dp-doc-links small {
   margin-top: 8px;
-  color: #778797;
+  color: #627381;
   font-size: 11px;
   line-height: 1.55;
 }
 
 .dp-doc-links svg {
-  color: #526474;
+  color: #718392;
   transition: color 160ms ease, transform 160ms ease;
 }
 
@@ -1113,12 +1168,16 @@ button {
   align-items: center;
   min-height: 100px;
   padding: 0 max(28px, calc((100vw - 1320px) / 2));
-  border-top: 1px solid var(--dp-line);
-  background: #080b10;
+  border-top: 1px solid #d9e2e8;
+  background: #ffffff;
+}
+
+.dp-site-footer .dp-brand {
+  color: #172435;
 }
 
 .dp-site-footer p {
-  color: #566676;
+  color: #718392;
   font-family: var(--vp-font-family-mono);
   font-size: 10px;
 }
@@ -1128,7 +1187,7 @@ button {
   align-items: center;
   justify-self: end;
   gap: 7px;
-  color: #96a5b3;
+  color: #536575;
   font-size: 12px;
 }
 
@@ -1407,17 +1466,288 @@ button {
   font-size: 11px;
 }
 
+.vp-doc p:has(> img[alt="导航页 / 自动生成卡片后的首页"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #0b0f15;
+  line-height: 0;
+}
+
+.vp-doc img[alt="导航页 / 自动生成卡片后的首页"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="首次访问 / 默认管理员登录"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #0b0f15;
+  line-height: 0;
+}
+
+.vp-doc img[alt="首次访问 / 默认管理员登录"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="卡片设置 / 透明度与状态提示"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #18191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="卡片设置 / 透明度与状态提示"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="页面设置 / 页面样式与 Dashboard 显示配置"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #18191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="页面设置 / 页面样式与 Dashboard 显示配置"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="自动地址 / 地址规则与批量补全"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #111720;
+  line-height: 0;
+}
+
+.vp-doc img[alt="自动地址 / 地址规则与批量补全"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="隐藏容器 / 容器卡片管理"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #18191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="隐藏容器 / 容器卡片管理"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="集成服务 / NAS 接入配置"]),
+.vp-doc p:has(> img[alt="集成服务 / 面板监控效果"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #18191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="集成服务 / NAS 接入配置"],
+.vp-doc img[alt="集成服务 / 面板监控效果"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="分组管理 / 服务分类"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #18191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="分组管理 / 服务分类"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="Docker 工作台 / 容器列表"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="Docker 工作台 / 容器列表"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="Compose 项目 / 项目列表"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="Compose 项目 / 项目列表"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="Compose 项目 / 项目详情"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="Compose 项目 / 项目详情"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="定时重启 / 任务列表"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="定时重启 / 任务列表"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="图标库 / 服务图标管理"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="图标库 / 服务图标管理"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="Docker 设置 / 镜像自动升级"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="Docker 设置 / 镜像自动升级"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="Docker 设置 / 更新检查跳过"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="Docker 设置 / 更新检查跳过"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="备份与恢复 / 导出与恢复"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="备份与恢复 / 导出与恢复"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="代理设置 / Docker 更新检测代理"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #f2f4f6;
+  line-height: 0;
+}
+
+.vp-doc img[alt="代理设置 / Docker 更新检测代理"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
 @media (max-width: 1120px) {
   .dp-desktop-nav { gap: 20px; }
-  .dp-stage { min-height: 860px; }
-  .dp-stage-copy { width: 62%; }
-  .dp-live-console { top: 470px; width: calc(100% - 56px); max-width: none; }
+  .dp-stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-top: 128px;
+  }
+
+  .dp-stage-copy { width: min(720px, 100%); }
+
+  .dp-live-console {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: none;
+    margin-top: 44px;
+  }
+
   .dp-stage-proof { display: none; }
   .dp-section-intro { grid-template-columns: 140px 1fr; }
   .dp-section-intro p { grid-column: 2; margin-left: 0; }
   .dp-flow-track { grid-template-columns: repeat(5, 220px); overflow-x: auto; }
   .dp-capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .dp-capability-grid article.is-wide { grid-column: span 1; }
 }
 
 @media (max-width: 760px) {
@@ -1438,7 +1768,7 @@ button {
   .dp-mobile-nav { top: 64px; }
 
   .dp-stage {
-    min-height: 990px;
+    min-height: 0;
     padding: 110px 20px 40px;
   }
 
@@ -1458,9 +1788,8 @@ button {
   .dp-primary-action { min-height: 45px; padding: 0 17px; }
 
   .dp-live-console {
-    top: 565px;
-    right: 20px;
-    width: calc(100% - 40px);
+    width: 100%;
+    margin-top: 42px;
   }
 
   .dp-console-head { grid-template-columns: 45px 1fr 45px; padding: 0 11px; }
@@ -1522,6 +1851,12 @@ button {
     gap: 34px;
     padding-top: 75px;
     padding-bottom: 75px;
+  }
+
+  .dp-screenshot-section--backend .dp-screenshot-frame,
+  .dp-screenshot-section--backend .dp-screenshot-copy {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .dp-doc-links { grid-template-columns: 1fr; }

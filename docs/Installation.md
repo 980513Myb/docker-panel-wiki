@@ -12,14 +12,14 @@ title: 安装教程
 
 | 项目 | 说明 |
 | --- | --- |
-| Docker 环境 | NAS 或 Linux 主机已安装 Docker。 |
-| 面板数据目录 | 推荐 `/volume1/docker/docker-panel/data`，用于保存数据库、图标、背景和配置。 |
-| Compose 项目目录 | 推荐 `/volume1/docker`，用于扫描和管理 Compose 项目。 |
+| Docker 环境 | 飞牛 NAS 已安装并启用 Docker。 |
+| 面板数据目录 | 使用项目目录下的 `./data`，用于保存数据库、图标、背景和配置。 |
+| Compose 项目目录 | 飞牛常用 Docker 目录为 `/vol1/1000/docker`，用于扫描和管理 Compose 项目。 |
 | 会话密钥 | `SESSION_SECRET` 必须替换为随机长字符串。 |
 
 ## Docker Compose 部署
 
-在项目目录中新建 `docker-compose.yml`：
+在飞牛 NAS 的 Docker 项目目录中新建 `docker-compose.yml`。例如项目放在 `/vol1/1000/docker/docker-panel` 时，下面的 `./data` 会自动保存到该项目目录中的 `data` 文件夹：
 
 ```yaml
 services:
@@ -36,11 +36,11 @@ services:
       DATABASE_URL: file:/app/data/panel.db
       SESSION_SECRET: change-this-to-a-long-random-value
       DOCKER_SOCKET: /var/run/docker.sock
-      DOCKER_COMPOSE_ROOTS: /volume1/docker
+      DOCKER_COMPOSE_ROOTS: /docker
     volumes:
-      - /volume1/docker/docker-panel/data:/app/data
+      - ./data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - /volume1/docker:/volume1/docker:rw
+      - /vol1/1000/docker:/docker:rw
 ```
 
 启动：
@@ -70,15 +70,15 @@ http://NAS-IP:9527
 
 登录 Docker-Panel 后台后，面板会开始读取容器、镜像、端口和 Compose 项目信息。建议登录后尽快修改默认密码，避免长期使用公开默认密码。
 
-> 截图：首次访问 / 默认管理员登录
+![首次访问 / 默认管理员登录](/assets/wiki/first-login.png)
 
 ## 挂载说明
 
 | 挂载 | 是否必须 | 作用 |
 | --- | --- | --- |
-| `/app/data` | 必须 | 保存面板数据库、上传图标、背景和所有配置。 |
+| `./data:/app/data` | 必须 | 保存面板数据库、上传图标、背景和所有配置；`./data` 位于当前项目目录。 |
 | `/var/run/docker.sock` | 必须 | 读取并管理 Docker 容器，不能只读挂载。 |
-| `/volume1/docker:rw` | 推荐 | 扫描 Compose 项目；需要在线编辑 YAML 或重建项目时使用 `rw`。 |
+| `/vol1/1000/docker:/docker:rw` | 推荐 | 扫描 Compose 项目；需要在线编辑 YAML 或重建项目时使用 `rw`。如果你的项目不在该目录，只修改左侧的 NAS 实际路径即可。 |
 
 ## 验证安装
 

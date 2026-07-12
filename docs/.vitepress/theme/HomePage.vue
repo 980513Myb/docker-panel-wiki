@@ -4,11 +4,9 @@ import { withBase } from 'vitepress'
 import {
   Activity,
   ArrowRight,
-  Boxes,
   Check,
   ChevronRight,
   CircleGauge,
-  Container,
   Cpu,
   Database,
   ExternalLink,
@@ -18,11 +16,10 @@ import {
   Layers3,
   Menu,
   Network,
+  Pencil,
   Radar,
   RefreshCw,
-  Search,
   ServerCog,
-  ShieldCheck,
   Sparkles,
   X
 } from '@lucide/vue'
@@ -35,7 +32,7 @@ const activeStep = ref(0)
 let timer: ReturnType<typeof setInterval> | undefined
 
 const base = (path: string) => withBase(path)
-const consoleTitle = computed(() => consoleMode.value === 'automation' ? '自动接管中心' : '实时容器监控')
+const consoleTitle = computed(() => consoleMode.value === 'automation' ? '自动化流程' : '实时容器卡片监控')
 
 const navItems = [
   { label: '安装教程', href: '/Installation' },
@@ -46,8 +43,8 @@ const navItems = [
 
 const flowSteps = [
   { id: '01', title: '发现容器', detail: '读取名称、镜像、网络、状态与宿主机映射端口。', icon: Radar },
-  { id: '02', title: '生成卡片', detail: '自动创建导航入口，补全服务名称、分组与状态。', icon: Layers3 },
-  { id: '03', title: '编写地址', detail: '按预设内外网地址拼接端口，写入可访问链接。', icon: Network },
+  { id: '02', title: '自动创建容器卡片', detail: '新容器建立，自动检测后按容器名称命名，进入预设分组。', icon: Layers3 },
+  { id: '03', title: '自动编写内外网访问地址', detail: '按预设内外网地址拼接端口，自动写入内外网访问地址。', icon: Network },
   { id: '04', title: '匹配图标', detail: '结合服务名、镜像与地址自动获取对应图标。', icon: Image },
   { id: '05', title: '直接使用', detail: '容器上线即可点击访问，后续仍可在后台可视化编辑。', icon: Check }
 ]
@@ -58,7 +55,10 @@ const capabilities = [
   { title: '内外网地址自动编写', text: '读取宿主机映射端口，自动生成带端口的内网地址与外网地址。', icon: Network, tone: 'blue' },
   { title: '后端可视化管理', text: '集中管理容器、Compose 项目、镜像、更新任务和定时重启。', icon: ServerCog, tone: 'amber' },
   { title: '实时资源监控', text: '实时刷新容器状态、CPU、内存、端口和运行时间，快速判断服务健康度。', icon: Activity, tone: 'cyan' },
-  { title: '持久化与安全部署', text: '明确数据目录、Docker Socket、会话密钥和最小暴露面配置。', icon: ShieldCheck, tone: 'green' }
+  { title: '内外网智能切换', text: '支持自动、内网、外网三种访问模式；自动模式会根据当前网络环境选择对应访问地址。', icon: Network, tone: 'green' },
+  { title: '全自动化流程', text: '自动新建容器卡片，自动填写地址和图标。', icon: RefreshCw, tone: 'blue' },
+  { title: '图标自动匹配', text: '根据容器名称、镜像名称与访问地址自动获取服务图标；未匹配时也可在后台手动替换。', icon: Image, tone: 'cyan' },
+  { title: '卡片可视化编辑', text: '可在后台修改卡片名称、图标、分组、内外网地址和展示状态。', icon: Pencil, tone: 'amber' }
 ]
 
 onMounted(() => {
@@ -130,15 +130,15 @@ onBeforeUnmount(() => timer && clearInterval(timer))
               <div class="dp-event-stream__head"><span>自动化事件流</span><small>刚刚</small></div>
               <div v-for="(step, index) in flowSteps.slice(0, 4)" :key="step.id" class="dp-event" :class="{ active: activeStep % 4 === index }">
                 <component :is="step.icon" :size="17" />
-                <div><strong>{{ step.title }}</strong><small>{{ index === 0 ? 'new-service · 9527/tcp' : step.detail }}</small></div>
+                <div><strong>{{ step.title }}</strong><small>{{ index === 0 ? '自动检测新建立容器' : step.detail }}</small></div>
                 <Check v-if="activeStep % 4 > index" :size="15" />
                 <span v-else-if="activeStep % 4 === index" class="dp-event-pulse"></span>
               </div>
             </div>
             <div class="dp-generated-card">
-              <div class="dp-generated-card__top"><Container :size="22" /><span>NEW</span></div>
-              <strong>Docker Service</strong>
-              <p>192.168.1.10:9527</p>
+              <div class="dp-generated-card__top"><img :src="base('/assets/brand-logo.png')" alt="Docker-Panel" /><span>NEW</span></div>
+              <strong>docker panel</strong>
+              <p>your nas ip:9527</p>
               <div class="dp-address-lines"><span></span><span></span></div>
               <small><Check :size="13" /> 卡片已就绪</small>
             </div>
@@ -153,8 +153,8 @@ onBeforeUnmount(() => timer && clearInterval(timer))
             <div class="dp-service-table">
               <div class="dp-service-table__head"><span>容器</span><span>状态</span><span>CPU</span><span>内存</span></div>
               <div><span><i class="is-green"></i> docker-panel</span><span>运行中</span><span>2.8%</span><span>286 MB</span></div>
-              <div><span><i class="is-cyan"></i> jellyfin</span><span>运行中</span><span>7.1%</span><span>1.24 GB</span></div>
-              <div><span><i class="is-blue"></i> uptime-kuma</span><span>运行中</span><span>2.5%</span><span>294 MB</span></div>
+              <div><span><i class="is-amber"></i> jellyfin</span><span>错误</span><span>0%</span><span>0 MB</span></div>
+              <div><span><i class="is-red"></i> uptime-kuma</span><span>已停止</span><span>0%</span><span>0 MB</span></div>
             </div>
           </div>
 
@@ -188,7 +188,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
 
         <div class="dp-automation-note">
           <div><RefreshCw :size="20" /><strong>自动地址是关键环节</strong></div>
-          <p>可根据预设的内网地址与外网地址，自动读取新容器的宿主机映射端口，生成带端口的访问链接并写入对应卡片。新服务上线后无需手动复制端口、拼接地址或逐个修改卡片。</p>
+          <p>可根据预设的内网地址与外网地址，自动读取新容器的宿主机映射端口，生成带端口的访问链接并写入对应卡片，自动获取图标。<br />新容器加入后无需手动复制端口、拼接地址或逐个修改卡片。</p>
         </div>
       </section>
 
@@ -196,11 +196,11 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         <header class="dp-section-intro dp-section-intro--light">
           <span>02 / CAPABILITIES</span>
           <h2>导航与管理，在同一个工作台完成</h2>
-          <p>前台负责访问效率，后台负责 Docker 运维。两套能力共享同一份容器数据。</p>
+          <p>前端负责快捷导航，容器面板实时查看。<br />后端负责 Docker 管理编辑。<br />一个容器，双项使用。</p>
         </header>
 
         <div class="dp-capability-grid">
-          <article v-for="(item, index) in capabilities" :key="item.title" :class="[`tone-${item.tone}`, { 'is-wide': index === 0 || index === 3 }]">
+          <article v-for="(item, index) in capabilities" :key="item.title" :class="`tone-${item.tone}`">
             <div class="dp-capability-icon"><component :is="item.icon" :size="23" /></div>
             <div><h3>{{ item.title }}</h3><p>{{ item.text }}</p></div>
             <span>{{ String(index + 1).padStart(2, '0') }}</span>
@@ -211,25 +211,34 @@ onBeforeUnmount(() => timer && clearInterval(timer))
       <section class="dp-screenshot-section">
         <div class="dp-screenshot-copy">
           <span>03 / PRODUCT VIEW</span>
-          <h2>真实界面，将在这里展开</h2>
-          <p>截图区域已按产品展示比例预留。后续替换为导航页自动生成卡片总览时，不需要重新调整页面结构。</p>
-          <div><Check :size="15" /> 推荐尺寸 16:9 或 16:10</div>
-          <div><Check :size="15" /> 发布前隐藏域名、IP、Token 与个人信息</div>
+          <h2>导航页与容器卡片总览</h2>
+          <p>前端导航页集中展示服务入口、分组、运行状态与资源信息，让常用 Docker 服务一眼可见。</p>
+          <div><Check :size="15" /> 服务卡片按分组统一整理</div>
+          <div><Check :size="15" /> 容器状态与资源信息实时呈现</div>
         </div>
         <div class="dp-screenshot-frame">
           <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / NAVIGATION</span></div>
-          <div class="dp-screenshot-empty">
-            <Boxes :size="34" />
-            <strong>导航页 / 自动生成容器卡片总览</strong>
-            <small>SCREENSHOT PLACEHOLDER</small>
-          </div>
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/navigation-overview.png')" alt="Docker-Panel 导航页与容器卡片总览" />
+        </div>
+      </section>
+
+      <section class="dp-screenshot-section dp-screenshot-section--backend">
+        <div class="dp-screenshot-frame">
+          <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / WORKBENCH</span></div>
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/container-workbench.png')" alt="Docker-Panel 后端容器管理工作台" />
+        </div>
+        <div class="dp-screenshot-copy">
+          <span>04 / CONTAINER WORKBENCH</span>
+          <h2>后端容器编辑与管理</h2>
+          <p>在 Docker 工作台集中查看容器状态、镜像、端口与资源占用，并完成日常容器维护与编辑。</p>
+          <div><Check :size="15" /> 启动、停止、重启与删除容器</div>
+          <div><Check :size="15" /> 管理 Compose、镜像、更新与定时重启</div>
         </div>
       </section>
 
       <section class="dp-docs-route">
         <header class="dp-section-intro dp-section-intro--light">
-          <span>04 / DOCUMENTATION</span>
-          <h2>从部署到日常维护</h2>
+          <span>05 / DOCUMENTATION</span>
         </header>
         <div class="dp-doc-links">
           <a :href="base('/Installation')"><span>01</span><div><strong>安装教程</strong><small>Compose 部署、默认账户、目录挂载与安装验证</small></div><ArrowRight :size="20" /></a>
