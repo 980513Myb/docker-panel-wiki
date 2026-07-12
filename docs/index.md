@@ -16,7 +16,7 @@
   <div class="feature-card"><h3>自动编写内外网地址</h3><p>根据宿主机端口、Host 网络和服务端口生成内网地址；同时支持外网地址维护和内外网访问切换。</p></div>
   <div class="feature-card"><h3>自动获取服务图标</h3><p>根据服务名称、镜像名称和图标库匹配图标，也可以手动上传或从图标库绑定，让导航卡片更直观。</p></div>
   <div class="feature-card"><h3>集成 Docker 面板</h3><p>容器、Compose、镜像、定时重启、更新检测与升级任务集中在同一个后台，不用频繁切换工具。</p></div>
-  <div class="feature-card"><h3>后台可视化编辑</h3><p>卡片、背景、页面、标语时间、搜索、分组、代理、Docker 参数都可以在后台调整，适合 NAS 长期维护。</p></div>
+  <div class="feature-card"><h3>实时容器面板监控</h3><p>实时刷新容器运行状态、CPU 占用、内存占用、端口与资源信息，方便在导航页和 Docker 工作台快速判断服务健康情况。</p></div>
   <div class="feature-card"><h3>解放手动维护</h3><p>新容器上线后自动进入整理流程，减少手动记录端口、复制地址、找图标、建卡片和改分组的时间。</p></div>
 </div>
 
