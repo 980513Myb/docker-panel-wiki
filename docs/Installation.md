@@ -1,4 +1,6 @@
-# 安装教程
+---
+title: 安装教程
+---
 
 <section class="dp-page-hero">
   <div class="dp-eyebrow">Installation</div>

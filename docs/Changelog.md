@@ -1,4 +1,6 @@
-# 版本日志
+---
+title: 版本日志
+---
 
 <section class="dp-page-hero">
   <div class="dp-eyebrow">Changelog</div>

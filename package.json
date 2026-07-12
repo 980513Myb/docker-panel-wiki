@@ -1,0 +1,16 @@
+{
+  "name": "docker-panel-wiki",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "docs:dev": "node node_modules/vitepress/bin/vitepress.js dev docs --port 888",
+    "docs:build": "node node_modules/vitepress/bin/vitepress.js build docs",
+    "docs:preview": "node node_modules/vitepress/bin/vitepress.js preview docs --port 888"
+  },
+  "devDependencies": {
+    "@lucide/vue": "^1.24.0",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.13"
+  }
+}

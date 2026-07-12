@@ -25,16 +25,22 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
         with:
-          python-version: "3.x"
+          version: 11.7.0
 
-      - name: Install MkDocs
-        run: pip install mkdocs-material
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
 
-      - name: Build site
-        run: mkdocs build --strict
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build VitePress site
+        run: pnpm docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

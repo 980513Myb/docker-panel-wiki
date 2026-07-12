@@ -1,4 +1,6 @@
 site/
+node_modules/
+docs/.vitepress/cache/
 .cache/
 .DS_Store
 Thumbs.db

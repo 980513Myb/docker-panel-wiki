@@ -1,4 +1,6 @@
-# 故障自检
+---
+title: 故障自检
+---
 
 <section class="dp-page-hero">
   <div class="dp-eyebrow">Self Check</div>
