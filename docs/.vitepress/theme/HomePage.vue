@@ -106,7 +106,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
           <div class="dp-status-chip"><span></span> Docker Navigation & Management Console</div>
           <h1>让 Docker 服务<br /><em>上线即可访问</em></h1>
           <p class="dp-stage-lead">Docker-Panel 是以服务导航为核心、集成 Docker 面板管理的一体化工具。新容器出现后，自动生成导航卡片、识别端口、编写内外网地址并获取图标。</p>
-          <p class="dp-stage-sub">从容器部署、入口生成到日常管理形成一条龙自动化流程，减少重复配置，后台仍保留完整的可视化编辑能力。</p>
+          <p class="dp-stage-sub">从容器部署、容器卡片自动生成到日常管理形成一条龙自动化流程，最大化减少手动编辑操作，解放双手，后端容器可视化面板管理。</p>
           <div class="dp-stage-actions">
             <a class="dp-primary-action" :href="base('/Installation')">开始安装 <ArrowRight :size="18" /></a>
             <a class="dp-text-action" :href="base('/Usage')">查看完整功能 <ChevronRight :size="17" /></a>
