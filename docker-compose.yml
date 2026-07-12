@@ -1,0 +1,11 @@
+services:
+  wiki:
+    image: squidfunk/mkdocs-material:latest
+    container_name: docker-panel-wiki
+    restart: unless-stopped
+    command: serve --dev-addr=0.0.0.0:8000
+    ports:
+      - "888:8000"
+    volumes:
+      - ./docs:/docs/docs:ro
+      - ./mkdocs.yml:/docs/mkdocs.yml:ro

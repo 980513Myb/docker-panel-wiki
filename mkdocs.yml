@@ -1,0 +1,83 @@
+site_name: Docker-Panel 中文 Wiki
+site_url: https://wiki.mouyanbin.top:888
+site_description: 面向 NAS 与 Linux 单机 Docker 环境的控制台部署与运维文档
+
+theme:
+  name: material
+  language: zh
+  logo: assets/brand-logo.png
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - assets/extra.css
+
+extra_javascript:
+  - assets/extra.js
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/mouyanbin/docker-panel
+
+nav:
+  - 首页: index.md
+  - 安装部署:
+      - 安装指南: Installation.md
+      - NAS 部署: NAS-Installation.md
+      - 配置说明: Configuration.md
+  - 功能使用:
+      - 导航页使用: Navigation.md
+      - 容器管理: Container-Management.md
+      - 自动地址: Automatic-Address.md
+      - 定时重启: Scheduled-Restarts.md
+      - 外观设置: Appearance.md
+  - 维护帮助:
+      - 备份与升级: Backup-and-Upgrade.md
+      - 故障排查: Troubleshooting.md
+      - 常见问题: FAQ.md
+      - 截图清单: Screenshots.md
