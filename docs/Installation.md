@@ -1,21 +1,23 @@
-# 安装指南
+# 安装教程
 
 <section class="dp-page-hero">
-  <div class="dp-eyebrow">Deployment</div>
-  <h1>安装 Docker-Panel</h1>
-  <p>使用 Docker Compose 部署面板，并把数据、Docker Socket 与可选 Compose 项目目录挂载到容器中。</p>
+  <div class="dp-eyebrow">Installation</div>
+  <h1>部署 Docker-Panel</h1>
+  <p>按本页完成部署后，面板即可读取 Docker 容器，进入自动生成导航卡片、自动补全地址和后台可视化管理流程。</p>
 </section>
 
-## 部署前准备
+## 准备工作
 
-- 一台已经安装 Docker 的 Linux / NAS 主机。
-- 一个用于保存面板数据的持久化目录，例如 `/volume1/docker/docker-panel/data`。
-- 一个足够长的随机 `SESSION_SECRET`，用于登录会话签名。
-- 仅在需要在线编辑 Compose 文件时，才为项目目录使用可写挂载。
+| 项目 | 说明 |
+| --- | --- |
+| Docker 环境 | NAS 或 Linux 主机已安装 Docker。 |
+| 面板数据目录 | 推荐 `/volume1/docker/docker-panel/data`，用于保存数据库、图标、背景和配置。 |
+| Compose 项目目录 | 推荐 `/volume1/docker`，用于扫描和管理 Compose 项目。 |
+| 会话密钥 | `SESSION_SECRET` 必须替换为随机长字符串。 |
 
 ## Docker Compose 部署
 
-在你的 Docker 项目目录创建 `docker-compose.yml`：
+在项目目录中新建 `docker-compose.yml`：
 
 ```yaml
 services:
@@ -39,59 +41,46 @@ services:
       - /volume1/docker:/volume1/docker:rw
 ```
 
-!!! warning "必须更换 SESSION_SECRET"
-    示例中的 `SESSION_SECRET` 不能直接用于生产环境。请替换为长随机字符串，并避免出现在截图、公开仓库或共享文档中。
-
-启动服务：
+启动：
 
 ```bash
 docker compose pull
 docker compose up -d
 ```
 
-访问 `http://NAS-IP:9527`，首次进入会打开管理员创建页面。完成账号设置后即可进入控制台。
+!!! warning "必须修改 SESSION_SECRET"
+    不要直接使用示例密钥。建议使用随机长字符串，并避免出现在截图、公开仓库或聊天记录中。
 
-> 截图：首次访问 / 管理员创建页面
+## 首次进入
 
-## Docker Run 部署
+浏览器访问：
 
-适合快速验证或没有 Compose 管理习惯的环境：
-
-```bash
-docker pull mouyanbin/docker-panel:latest
-
-docker run -d \
-  --name docker-panel \
-  --restart unless-stopped \
-  -p 9527:9527 \
-  -e NODE_ENV=production \
-  -e PORT=9527 \
-  -e DATABASE_URL=file:/app/data/panel.db \
-  -e SESSION_SECRET=change-this-to-a-long-random-value \
-  -e DOCKER_SOCKET=/var/run/docker.sock \
-  -e DOCKER_COMPOSE_ROOTS=/volume1/docker \
-  -v /volume1/docker/docker-panel/data:/app/data \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /volume1/docker:/volume1/docker:rw \
-  mouyanbin/docker-panel:latest
+```text
+http://NAS-IP:9527
 ```
 
-## 挂载策略
+首次访问会进入管理员创建页面。创建完成后进入 Docker-Panel 后台，面板会开始读取容器、镜像、端口和 Compose 项目信息。
 
-| 挂载 | 建议 | 说明 |
+> 截图：首次访问 / 管理员创建
+
+## 挂载说明
+
+| 挂载 | 是否必须 | 作用 |
 | --- | --- | --- |
-| `/app/data` | 必须 | 保存 SQLite 数据库、上传资源与面板配置。 |
-| `/var/run/docker.sock` | 必须 | 面板发现和管理 Docker 的控制入口，不能只读挂载。 |
-| Compose 项目目录 | 可选 | 只查看可使用 `:ro`；需要保存 YAML 或重建项目时使用 `:rw`。 |
+| `/app/data` | 必须 | 保存面板数据库、上传图标、背景和所有配置。 |
+| `/var/run/docker.sock` | 必须 | 读取并管理 Docker 容器，不能只读挂载。 |
+| `/volume1/docker:rw` | 推荐 | 扫描 Compose 项目；需要在线编辑 YAML 或重建项目时使用 `rw`。 |
 
-## 验证结果
+## 验证安装
 
 ```bash
 docker ps --filter name=docker-panel
-docker logs --tail 80 docker-panel
+docker logs --tail 100 docker-panel
 ```
 
-确认容器处于 `Up` 状态，并且日志中没有数据库、Socket 或端口占用错误。
+确认容器处于 `Up` 状态，并且日志中没有数据库、Docker Socket 或端口占用错误。
 
-!!! tip "端口调整"
-    只需要修改映射左侧即可，例如 `8080:9527` 表示宿主机通过 `8080` 访问，容器内部仍监听 `9527`。
+## 安装后下一步
+
+- 进入 [使用教程](Usage.md)，配置自动地址、图标、分组和导航卡片。
+- 如果无法访问面板，进入 [故障自检](Troubleshooting.md) 按清单排查。

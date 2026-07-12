@@ -1,6 +1,6 @@
 # Docker-Panel Wiki
 
-Docker-Panel 中文 Wiki，面向 NAS 与 Linux 单机 Docker 环境，覆盖安装部署、服务导航、容器管理、Compose 项目、自动地址、定时重启、外观配置、备份升级与故障排查。
+Docker-Panel Wiki，面向 NAS 与 Linux 单机 Docker 环境，覆盖安装部署、服务导航、容器管理、Compose 项目、自动地址、定时重启、外观配置、备份升级与故障排查。
 
 ## 本地预览
 

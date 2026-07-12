@@ -1,40 +1,39 @@
 <section class="dp-hero">
-  <div class="dp-eyebrow">NAS / Linux Docker Console</div>
-  <h1>Docker-Panel 中文 Wiki</h1>
-  <p>面向单机 Docker 与 NAS 环境的控制台文档。这里整理了部署、服务导航、容器生命周期、Compose 项目、自动地址、任务记录与安全运维的完整路径。</p>
+  <div class="dp-eyebrow">Docker Navigation & Management Console</div>
+  <h1>Docker-Panel Wiki</h1>
+  <p>Docker-Panel 是一个以 Docker 导航页为核心的可视化管理面板。它不是普通书签页，而是把容器发现、卡片生成、端口识别、内外网地址补全、图标匹配和 Docker 后台管理整合到一起。</p>
+  <p>当你部署一个新容器后，面板可以自动发现它，自动新增导航卡片，自动识别映射端口，自动编写内网访问地址，并通过图标库匹配服务图标。你只需要补充少量个性化信息，就能把 Docker 服务从“刚部署”推进到“可访问、可展示、可管理”。</p>
   <div class="dp-actions">
-    <a class="md-button md-button--primary" href="Installation/">开始部署</a>
-    <a class="md-button" href="Navigation/">查看能力</a>
+    <a class="md-button md-button--primary" href="Installation/">开始安装</a>
+    <a class="md-button" href="Usage/">查看使用教程</a>
   </div>
 </section>
 
-<section class="dp-metrics">
-  <div><strong>9527</strong><span>默认面板端口</span></div>
-  <div><strong>SQLite</strong><span>本地持久化</span></div>
-  <div><strong>Docker Socket</strong><span>容器控制入口</span></div>
-  <div><strong>Compose</strong><span>项目级管理</span></div>
-</section>
-
-## 控制台能力矩阵
+## 核心亮点
 
 <div class="feature-grid">
-  <div class="feature-card"><h3>服务导航</h3><p>从容器、标签和端口推断服务入口，统一维护内网地址、外网地址、分组、图标和隐藏状态。</p></div>
-  <div class="feature-card"><h3>容器生命周期</h3><p>集中执行启动、停止、重启、删除、镜像拉取和容器升级，并通过任务记录跟踪过程。</p></div>
-  <div class="feature-card"><h3>Compose 项目</h3><p>按项目查看服务状态，支持读取 Compose 文件；可写挂载时可保存 YAML 并重建项目。</p></div>
-  <div class="feature-card"><h3>自动地址</h3><p>基于映射端口、Host 网络和主机地址生成服务 URL，减少重复维护成本。</p></div>
-  <div class="feature-card"><h3>计划任务</h3><p>为指定容器配置定时重启策略，适合需要周期性释放资源或恢复状态的服务。</p></div>
-  <div class="feature-card"><h3>安全部署</h3><p>明确 Docker Socket、会话密钥、反向代理和访问边界，避免把高权限入口暴露到公网。</p></div>
+  <div class="feature-card"><h3>自动新增容器卡片</h3><p>读取 Docker 容器、镜像、端口和运行状态，自动把可访问服务整理成导航卡片，省去逐个创建入口的重复操作。</p></div>
+  <div class="feature-card"><h3>自动编写内外网地址</h3><p>根据宿主机端口、Host 网络和服务端口生成内网地址；同时支持外网地址维护和内外网访问切换。</p></div>
+  <div class="feature-card"><h3>自动获取服务图标</h3><p>根据服务名称、镜像名称和图标库匹配图标，也可以手动上传或从图标库绑定，让导航卡片更直观。</p></div>
+  <div class="feature-card"><h3>集成 Docker 面板</h3><p>容器、Compose、镜像、定时重启、更新检测与升级任务集中在同一个后台，不用频繁切换工具。</p></div>
+  <div class="feature-card"><h3>后台可视化编辑</h3><p>卡片、背景、页面、标语时间、搜索、分组、代理、Docker 参数都可以在后台调整，适合 NAS 长期维护。</p></div>
+  <div class="feature-card"><h3>解放手动维护</h3><p>新容器上线后自动进入整理流程，减少手动记录端口、复制地址、找图标、建卡片和改分组的时间。</p></div>
 </div>
 
-## 推荐阅读路径
+## 一条龙流程
 
-1. 阅读 [安装指南](Installation.md)，准备持久化目录、会话密钥和 Docker Socket 挂载。
-2. 针对群晖或其他 NAS，参考 [NAS 部署](NAS-Installation.md) 调整路径、项目目录和权限。
-3. 完成首次管理员创建后，进入 [导航页使用](Navigation.md) 与 [容器管理](Container-Management.md) 配置核心工作流。
-4. 需要批量补全服务入口时，继续配置 [自动地址](Automatic-Address.md)。
-5. 上线前阅读 [配置说明](Configuration.md)、[备份与升级](Backup-and-Upgrade.md) 和 [故障排查](Troubleshooting.md)。
+<div class="dp-flow">
+  <div><strong>发现容器</strong><span>通过 Docker Socket 读取容器列表、镜像、端口、网络、状态和 Compose 项目信息。</span></div>
+  <div><strong>生成卡片</strong><span>根据容器与镜像信息生成导航卡片，并补全服务名称、分组、图标和状态。</span></div>
+  <div><strong>补全地址</strong><span>自动识别映射端口，生成内网访问地址；需要远程访问时补充外网地址。</span></div>
+  <div><strong>持续管理</strong><span>在 Docker 工作台里启动、停止、重启、更新、删除容器，并查看任务记录。</span></div>
+</div>
 
-> 截图：控制台首页 / 服务导航总览
+> 截图：导航页 / 自动生成容器卡片总览
 
-!!! danger "安全边界"
-    Docker-Panel 挂载 `/var/run/docker.sock` 后拥有较高 Docker 控制权限。建议仅部署在可信局域网、VPN 或受访问控制保护的反向代理后，并为 `SESSION_SECRET` 和管理员密码使用高强度随机值。
+## 文档路线
+
+1. [安装教程](Installation.md)：部署 Docker-Panel，完成首次管理员创建。
+2. [使用教程](Usage.md)：完整了解导航页、自动化能力、Docker 面板和配置管理。
+3. [故障自检](Troubleshooting.md)：遇到无法访问、无法识别、无法更新时按清单排查。
+4. [版本日志](Changelog.md)：查看 Wiki 与功能说明的更新记录。

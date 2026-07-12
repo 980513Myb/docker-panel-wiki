@@ -2,7 +2,7 @@ Docker-Panel Wiki 群晖部署说明
 
 用途
 ----
-本目录用于在群晖 Container Manager 中独立运行 Docker-Panel 中文 Wiki。
+本目录用于在群晖 Container Manager 中独立运行 Docker-Panel Wiki。
 服务基于 Material for MkDocs，默认通过宿主机 888 端口访问。
 
 目录结构
