@@ -1787,6 +1787,11 @@ button {
   .dp-stage-sub,
   .dp-live-console { min-width: 0; max-width: 100%; }
   .dp-stage h1 { margin-top: 20px; font-size: 38px; line-height: 1.12; overflow-wrap: anywhere; }
+  .dp-stage h1 em {
+    display: block;
+    color: #dce8f1;
+    -webkit-text-stroke: 0;
+  }
   .dp-stage-lead { font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
   .dp-stage-sub { font-size: 13px; overflow-wrap: anywhere; }
   .dp-stage-actions { gap: 17px; }
