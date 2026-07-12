@@ -1085,16 +1085,16 @@ button {
 }
 
 .dp-docs-route {
-  border-top: 1px solid #d9e2e8;
-  background: #f3f6f8;
+  border-top: 1px solid rgba(169, 189, 210, 0.13);
+  background: #0b0f15;
 }
 
 .dp-docs-route .dp-section-intro--light > span {
-  color: #087f8c;
+  color: var(--dp-cyan);
 }
 
 .dp-docs-route .dp-section-intro--light h2 {
-  color: #101820;
+  color: #f1f5f8;
 }
 
 .dp-docs-route .dp-section-intro {
@@ -1110,8 +1110,8 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   margin-top: 50px;
-  border: 1px solid #cbd5dd;
-  background: #cbd5dd;
+  border: 1px solid rgba(169, 189, 210, 0.16);
+  background: rgba(169, 189, 210, 0.16);
 }
 
 .dp-doc-links a {
@@ -1121,12 +1121,12 @@ button {
   align-items: center;
   min-height: 140px;
   padding: 25px;
-  background: #ffffff;
+  background: #101720;
   transition: background 160ms ease;
 }
 
 .dp-doc-links a:hover {
-  background: #eef7f8;
+  background: #15232b;
 }
 
 .dp-doc-links a > span {
@@ -1141,19 +1141,19 @@ button {
 }
 
 .dp-doc-links strong {
-  color: #172435;
+  color: #eef4f8;
   font-size: 16px;
 }
 
 .dp-doc-links small {
   margin-top: 8px;
-  color: #627381;
+  color: #91a2b1;
   font-size: 11px;
   line-height: 1.55;
 }
 
 .dp-doc-links svg {
-  color: #718392;
+  color: #7f92a2;
   transition: color 160ms ease, transform 160ms ease;
 }
 
@@ -1168,16 +1168,16 @@ button {
   align-items: center;
   min-height: 100px;
   padding: 0 max(28px, calc((100vw - 1320px) / 2));
-  border-top: 1px solid #d9e2e8;
-  background: #ffffff;
+  border-top: 1px solid rgba(169, 189, 210, 0.13);
+  background: #080b10;
 }
 
 .dp-site-footer .dp-brand {
-  color: #172435;
+  color: #eef4f8;
 }
 
 .dp-site-footer p {
-  color: #718392;
+  color: #7f92a2;
   font-family: var(--vp-font-family-mono);
   font-size: 10px;
 }
@@ -1187,7 +1187,7 @@ button {
   align-items: center;
   justify-self: end;
   gap: 7px;
-  color: #536575;
+  color: #c3d0da;
   font-size: 12px;
 }
 
@@ -1702,6 +1702,25 @@ button {
 }
 
 .vp-doc img[alt="备份与恢复 / 导出与恢复"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  transform: scale(1.008);
+}
+
+.vp-doc p:has(> img[alt="自动地址 / Agent 节点地址预设"]),
+.vp-doc p:has(> img[alt="分组管理 / Agent 节点默认分组"]),
+.vp-doc p:has(> img[alt="Agent 管理 / 多服务器节点总览"]) {
+  overflow: hidden;
+  margin: 26px 0;
+  border-radius: 6px;
+  background: #16191d;
+  line-height: 0;
+}
+
+.vp-doc img[alt="自动地址 / Agent 节点地址预设"],
+.vp-doc img[alt="分组管理 / Agent 节点默认分组"],
+.vp-doc img[alt="Agent 管理 / 多服务器节点总览"] {
   display: block;
   width: 100%;
   max-width: none;

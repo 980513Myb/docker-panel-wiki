@@ -42,7 +42,7 @@ const navItems = [
 ]
 
 const flowSteps = [
-  { id: '01', title: '发现容器', detail: '读取名称、镜像、网络、状态与宿主机映射端口。', icon: Radar },
+  { id: '01', title: '发现容器', detail: '同步本机与 Agent 节点的名称、镜像、网络、状态和映射端口。', icon: Radar },
   { id: '02', title: '自动创建容器卡片', detail: '新容器建立，自动检测后按容器名称命名，进入预设分组。', icon: Layers3 },
   { id: '03', title: '自动编写内外网访问地址', detail: '按预设内外网地址拼接端口，自动写入内外网访问地址。', icon: Network },
   { id: '04', title: '匹配图标', detail: '结合服务名、镜像与地址自动获取对应图标。', icon: Image },
@@ -56,9 +56,9 @@ const capabilities = [
   { title: '后端可视化管理', text: '集中管理容器、Compose 项目、镜像、更新任务和定时重启。', icon: ServerCog, tone: 'amber' },
   { title: '实时资源监控', text: '实时刷新容器状态、CPU、内存、端口和运行时间，快速判断服务健康度。', icon: Activity, tone: 'cyan' },
   { title: '内外网智能切换', text: '支持自动、内网、外网三种访问模式；自动模式会根据当前网络环境选择对应访问地址。', icon: Network, tone: 'green' },
-  { title: '全自动化流程', text: '自动新建容器卡片，自动填写地址和图标。', icon: RefreshCw, tone: 'blue' },
+  { title: 'Agent 多节点管理', text: '接入远程 VPS 与 Docker 服务器，在同一面板统一查看节点、容器状态和资源。', icon: Database, tone: 'blue' },
   { title: '图标自动匹配', text: '根据容器名称、镜像名称与访问地址自动获取服务图标；未匹配时也可在后台手动替换。', icon: Image, tone: 'cyan' },
-  { title: '卡片可视化编辑', text: '可在后台修改卡片名称、图标、分组、内外网地址和展示状态。', icon: Pencil, tone: 'amber' }
+  { title: '节点地址预输入', text: '可为本机和每个 Agent 节点分别预设内外网地址，新容器自动沿用对应规则。', icon: Network, tone: 'amber' }
 ]
 
 onMounted(() => {
@@ -105,8 +105,8 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         <div class="dp-stage-copy">
           <div class="dp-status-chip"><span></span> Docker Navigation & Management Console</div>
           <h1>让 Docker 服务<br /><em>上线即可访问</em></h1>
-          <p class="dp-stage-lead">Docker-Panel 是以服务导航为核心、集成 Docker 面板管理的一体化工具。新容器出现后，自动生成导航卡片、识别端口、编写内外网地址并获取图标。</p>
-          <p class="dp-stage-sub">从容器部署、容器卡片自动生成到日常管理形成一条龙自动化流程，最大化减少手动编辑操作，解放双手，后端容器可视化面板管理。</p>
+          <p class="dp-stage-lead">Docker-Panel 是以服务导航为核心，集成 Docker 面板与 Agent 多节点管理的一体化工具。本机 NAS、远程 VPS 与多台 Docker 服务器都能在同一工作台统一管理。</p>
+          <p class="dp-stage-sub">新容器上线后，自动生成导航卡片、识别端口、编写内外网地址并获取图标；节点容器可按预设地址与分组自动加入导航页，最大化减少手动编辑操作。</p>
           <div class="dp-stage-actions">
             <a class="dp-primary-action" :href="base('/Installation')">开始安装 <ArrowRight :size="18" /></a>
             <a class="dp-text-action" :href="base('/Usage')">查看完整功能 <ChevronRight :size="17" /></a>
@@ -236,9 +236,23 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         </div>
       </section>
 
+      <section class="dp-screenshot-section dp-screenshot-section--agent">
+        <div class="dp-screenshot-copy">
+          <span>05 / AGENT NODES</span>
+          <h2>Agent 多节点管理</h2>
+          <p>将远程 VPS、NAS 或其他 Docker 服务器作为 Agent 节点接入，在同一面板集中查看连接状态、版本信息、网络流量与节点容器。</p>
+          <div><Check :size="15" /> 多台服务器统一接入，不暴露远程 Docker Socket</div>
+          <div><Check :size="15" /> 节点容器同步导航页，并按节点预设地址与分组自动整理</div>
+        </div>
+        <div class="dp-screenshot-frame">
+          <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / AGENT NODES</span></div>
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/agent-nodes.png')" alt="Docker-Panel Agent 多节点管理" />
+        </div>
+      </section>
+
       <section class="dp-docs-route">
         <header class="dp-section-intro dp-section-intro--light">
-          <span>05 / DOCUMENTATION</span>
+          <span>06 / DOCUMENTATION</span>
         </header>
         <div class="dp-doc-links">
           <a :href="base('/Installation')"><span>01</span><div><strong>安装教程</strong><small>Compose 部署、默认账户、目录挂载与安装验证</small></div><ArrowRight :size="20" /></a>

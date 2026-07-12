@@ -33,10 +33,11 @@ export default defineConfig({
           text: '使用教程',
           items: [
             { text: '总体工作方式', link: '/Usage#总体工作方式' },
-            { text: '导航页功能', link: '/Usage#导航页功能' },
+            { text: '前端导航页', link: '/Usage#前端导航页' },
             { text: '自动地址', link: '/Usage#自动地址' },
             { text: '容器卡片管理', link: '/Usage#容器卡片管理' },
-            { text: '后端容器管理', link: '/Usage#后端容器管理' },
+            { text: '后端容器面板', link: '/Usage#后端容器面板' },
+            { text: 'Agent 节点管理', link: '/Usage#agent-节点管理' },
             { text: '容器管理', link: '/Usage#容器管理' },
             { text: 'Compose 项目', link: '/Usage#compose-项目' },
             { text: '系统操作', link: '/Usage#底部与系统操作' }
