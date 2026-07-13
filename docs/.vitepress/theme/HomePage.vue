@@ -259,7 +259,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         <div class="dp-screenshot-copy">
           <span>05 / AGENT NODES</span>
           <h2>Agent 多节点管理</h2>
-          <p>将远程 VPS、NAS 或其他 Docker 服务器作为 Agent 节点接入，在同一面板集中查看连接状态、版本信息、网络流量与节点容器。</p>
+          <p>将远程 VPS、NAS 或其他 Docker 服务器作为 Agent 节点接入，在同一面板实时查看节点 CPU、内存、磁盘占用、上传下载流量与节点容器。</p>
           <div><Check :size="15" /> 多台服务器统一接入，不暴露远程 Docker Socket</div>
           <div><Check :size="15" /> 节点容器同步导航页，并按节点预设地址与分组自动整理</div>
         </div>
