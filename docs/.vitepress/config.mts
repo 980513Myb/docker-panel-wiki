@@ -37,9 +37,14 @@ export default defineConfig({
             { text: '自动地址', link: '/Usage#自动地址' },
             { text: '容器卡片管理', link: '/Usage#容器卡片管理' },
             { text: '后端容器面板', link: '/Usage#后端容器面板' },
-            { text: 'Agent 节点管理', link: '/Usage#agent-节点管理' },
             { text: '容器管理', link: '/Usage#容器管理' },
             { text: 'Compose 项目', link: '/Usage#compose-项目' },
+            { text: '定时重启', link: '/Usage#定时重启' },
+            { text: 'Agent 节点管理', link: '/Usage#agent-节点管理' },
+            { text: '镜像管理', link: '/Usage#镜像管理' },
+            { text: '图标库', link: '/Usage#图标库' },
+            { text: '代理设置', link: '/Usage#代理设置' },
+            { text: 'Docker 设置', link: '/Usage#docker-设置' },
             { text: '系统操作', link: '/Usage#底部与系统操作' }
           ]
         }
