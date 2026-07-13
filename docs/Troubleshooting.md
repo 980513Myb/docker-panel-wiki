@@ -1,5 +1,8 @@
 ---
 title: 故障自检
+next:
+  text: 版本日志
+  link: /Changelog
 ---
 
 <section class="dp-page-hero">

@@ -26,7 +26,13 @@ export default defineConfig({
     ],
     sidebar: {
       '/Installation': [
-        { text: '安装教程', items: [{ text: '部署 Docker-Panel', link: '/Installation' }] }
+        {
+          text: '安装教程',
+          items: [
+            { text: '部署 Docker-Panel', link: '/Installation' },
+            { text: 'Telegram 频道', link: '/Installation#telegram-频道' }
+          ]
+        }
       ],
       '/Usage': [
         {

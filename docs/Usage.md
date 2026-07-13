@@ -1,5 +1,8 @@
 ---
 title: 使用教程
+next:
+  text: 故障自检
+  link: /Troubleshooting
 ---
 
 <section class="dp-page-hero">
@@ -23,7 +26,7 @@ title: 使用教程
   <div class="dp-panel"><h3>系统操作</h3><p>面向日常使用，负责明暗模式、系统设置、退出登录、备份与维护。</p></div>
 </div>
 
-![导航页 / 自动生成卡片后的首页](/assets/wiki/usage-navigation-overview.png)
+![导航页 / 自动生成卡片后的首页](/assets/wiki/usage-navigation-overview-v2.png)
 
 ## 前端导航页
 
@@ -405,6 +408,6 @@ Docker 设置用于控制容器的更新检查、镜像自动升级与旧镜像�
 
 迁移或升级前建议先导出备份；需要恢复时，在目标面板选择备份文件即可还原导航、节点和相关配置。
 
-![备份与恢复 / 导出与恢复](/assets/wiki/backup-restore.png)
+![备份与恢复 / 导出与恢复](/assets/wiki/backup-restore-v2.png)
 
 遇到问题时进入 [故障自检](Troubleshooting.md)。
