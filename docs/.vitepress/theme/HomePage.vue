@@ -244,7 +244,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
       <section class="dp-screenshot-section dp-screenshot-section--backend">
         <div class="dp-screenshot-frame">
           <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / WORKBENCH</span></div>
-          <img class="dp-screenshot-image" :src="base('/assets/wiki/container-workbench.png')" alt="Docker-Panel 后端容器管理工作台" />
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/container-workbench-v2.png')" alt="Docker-Panel 后端容器管理工作台" />
         </div>
         <div class="dp-screenshot-copy">
           <span>04 / CONTAINER WORKBENCH</span>
@@ -265,7 +265,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         </div>
         <div class="dp-screenshot-frame">
           <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / AGENT NODES</span></div>
-          <img class="dp-screenshot-image" :src="base('/assets/wiki/agent-nodes.png')" alt="Docker-Panel Agent 多节点管理" />
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/agent-nodes-v2.png')" alt="Docker-Panel Agent 多节点管理" />
         </div>
       </section>
 

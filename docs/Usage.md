@@ -263,7 +263,7 @@ Dashboard 显示配置可控制首页顶部内容：
 - 创建更新任务。
 - 查看任务进度和日志。
 
-![Docker 工作台 / 容器列表](/assets/wiki/docker-workbench-list.png)
+![Docker 工作台 / 容器列表](/assets/wiki/docker-workbench-list-v2.png)
 
 ### Compose 项目
 
@@ -280,9 +280,9 @@ Compose 项目页面用于按项目查看和维护服务。
 
 如果只想查看项目，目录可以只读挂载；如果要在线编辑 YAML，需要使用 `:rw`。
 
-![Compose 项目 / 项目列表](/assets/wiki/compose-projects.png)
+![Compose 项目 / 项目列表](/assets/wiki/compose-projects-v2.png)
 
-![Compose 项目 / 项目详情](/assets/wiki/compose-project-detail.png)
+![Compose 项目 / 项目详情](/assets/wiki/compose-project-detail-v2.png)
 
 ### 定时重启
 
@@ -298,7 +298,7 @@ Compose 项目页面用于按项目查看和维护服务。
 
 不建议对数据库、认证、网关等关键服务随意开启定时重启。
 
-![定时重启 / 任务列表](/assets/wiki/scheduled-restart.png)
+![定时重启 / 任务列表](/assets/wiki/scheduled-restart-v2.png)
 
 ### Agent 节点管理
 
@@ -308,7 +308,7 @@ Agent 用于把远程 VPS、NAS 或其他 Docker 服务器接入 Docker-Panel。
 
 节点支持添加、重命名、编辑地址预设、吊销连接和删除。添加节点时使用面板生成的接入信息完成注册，不需要把远程 Docker Socket 暴露到公网。
 
-![Agent 管理 / 多服务器节点总览](/assets/wiki/agent-nodes.png)
+![Agent 管理 / 多服务器节点总览](/assets/wiki/agent-nodes-v2.png)
 
 ### 镜像管理
 
@@ -337,7 +337,7 @@ Agent 用于把远程 VPS、NAS 或其他 Docker 服务器接入 Docker-Panel。
 
 图标库适合集中维护常用服务图标，例如媒体服务、下载工具、NAS 工具、代理服务、监控服务和自建应用。
 
-![图标库 / 服务图标管理](/assets/wiki/icon-library.png)
+![图标库 / 服务图标管理](/assets/wiki/icon-library-v2.png)
 
 ### 代理设置
 
@@ -363,13 +363,13 @@ Docker 设置用于控制容器的更新检查、镜像自动升级与旧镜像�
 
 勾选后的容器不会参与“待更新”扫描，也不会自动进行镜像比较。适合不希望频繁检查或暂不升级的服务。
 
-![Docker 设置 / 更新检查跳过](/assets/wiki/update-check-skip.png)
+![Docker 设置 / 更新检查跳过](/assets/wiki/update-check-skip-v2.png)
 
 #### 镜像自动升级
 
 可选择需要自动升级的容器。系统检测到新镜像后会自动创建升级任务，并按任务顺序执行；升级失败时会保留并恢复旧容器，避免服务直接中断。
 
-![Docker 设置 / 镜像自动升级](/assets/wiki/automatic-image-upgrade.png)
+![Docker 设置 / 镜像自动升级](/assets/wiki/automatic-image-upgrade-v2.png)
 
 #### 旧镜像清理
 
