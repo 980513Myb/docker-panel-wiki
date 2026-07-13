@@ -22,7 +22,7 @@ next:
 
 ## Docker Compose 部署
 
-在飞牛 NAS 的 Docker 项目目录中新建 `docker-compose.yml`。例如项目放在 `/vol1/1000/docker/docker-panel` 时，下面的 `./data` 会自动保存到该项目目录中的 `data` 文件夹：
+在飞牛 NAS 的 Docker 项目目录中新建 `docker-compose.yml`。以下示例将面板数据固定保存到 `/vol1/1000/docker/docker-panel/data`：
 
 ```yaml
 services:
@@ -35,15 +35,23 @@ services:
       - "9527:9527"
     environment:
       NODE_ENV: production
-      PORT: 9527
-      DATABASE_URL: file:/app/data/panel.db
-      SESSION_SECRET: change-this-to-a-long-random-value
-      DOCKER_SOCKET: /var/run/docker.sock
-      DOCKER_COMPOSE_ROOTS: /docker
+      PORT: "9527"
+      DATABASE_URL: "file:/app/data/panel.db"
+
+      # 必须修改，升级时保持不变
+      SESSION_SECRET: "请替换成至少32位的随机字符串"
+
+      DOCKER_SOCKET: "/var/run/docker.sock"
+      DOCKER_COMPOSE_ROOTS: "/vol1/1000/docker"
     volumes:
-      - ./data:/app/data
+      # 面板数据库及配置
+      - /vol1/1000/docker/docker-panel/data:/app/data
+
+      # Docker 管理权限
       - /var/run/docker.sock:/var/run/docker.sock
-      - /vol1/1000/docker:/docker:rw
+
+      # 飞牛 Compose 项目根目录
+      - /vol1/1000/docker:/vol1/1000/docker:rw
 ```
 
 启动：
@@ -53,8 +61,31 @@ docker compose pull
 docker compose up -d
 ```
 
-!!! warning "必须修改 SESSION_SECRET"
-    不要直接使用示例密钥。建议使用随机长字符串，并避免出现在截图、公开仓库或聊天记录中。
+::: warning 必须修改 SESSION_SECRET
+请将 `SESSION_SECRET` 替换为至少 32 位随机字符串。不要直接使用示例密钥，也不要将真实密钥公开在截图、仓库或聊天记录中。
+:::
+
+## Docker Run 部署
+
+不使用 Compose 时，也可以直接执行以下命令部署。首次使用前请修改 `SESSION_SECRET`：
+
+```bash
+docker run -d \
+  --name docker-panel \
+  --restart unless-stopped \
+  --pull always \
+  -p 9527:9527 \
+  -e NODE_ENV=production \
+  -e PORT=9527 \
+  -e DATABASE_URL=file:/app/data/panel.db \
+  -e SESSION_SECRET='请替换成至少32位的随机字符串' \
+  -e DOCKER_SOCKET=/var/run/docker.sock \
+  -e DOCKER_COMPOSE_ROOTS=/vol1/1000/docker \
+  -v /vol1/1000/docker/docker-panel/data:/app/data \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /vol1/1000/docker:/vol1/1000/docker:rw \
+  mouyanbin/docker-panel:latest
+```
 
 ## 首次进入
 
@@ -77,11 +108,12 @@ http://NAS-IP:9527
 
 ## 挂载说明
 
-| 挂载 | 是否必须 | 作用 |
+| 挂载 / 配置 | 是否必须 | 作用 |
 | --- | --- | --- |
-| `./data:/app/data` | 必须 | 保存面板数据库、上传图标、背景和所有配置；`./data` 位于当前项目目录。 |
+| `/vol1/1000/docker/docker-panel/data:/app/data` | 必须 | 保存面板数据库、上传图标、背景和所有配置；不挂载时，重建容器会丢失这些数据。 |
 | `/var/run/docker.sock` | 必须 | 读取并管理 Docker 容器，不能只读挂载。 |
-| `/vol1/1000/docker:/docker:rw` | 推荐 | 扫描 Compose 项目；需要在线编辑 YAML 或重建项目时使用 `rw`。如果你的项目不在该目录，只修改左侧的 NAS 实际路径即可。 |
+| `/vol1/1000/docker:/vol1/1000/docker:rw` | 推荐 | 将 NAS 中的 Compose 项目目录映射进容器，用于扫描项目；需要在线编辑 YAML 或重建项目时使用 `rw`。 |
+| `DOCKER_COMPOSE_ROOTS: "/vol1/1000/docker"` | 推荐 | 用于让面板定位 Compose 项目文件。若未填写、路径错误或没有对应挂载，面板无法扫描、查看、在线编辑，也无法删除对应的 Compose 项目文件。 |
 
 ## 验证安装
 

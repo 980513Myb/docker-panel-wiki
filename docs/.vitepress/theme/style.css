@@ -1611,6 +1611,11 @@ button {
   border-radius: 4px;
 }
 
+.vp-doc table td:first-child code {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
 .vp-doc p:has(> img[alt="导航页 / 自动生成卡片后的首页"]) {
   overflow: hidden;
   margin: 26px 0;
