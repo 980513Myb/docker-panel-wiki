@@ -24,7 +24,7 @@ import {
   X
 } from '@lucide/vue'
 
-type ConsoleMode = 'automation' | 'monitoring'
+type ConsoleMode = 'automation' | 'monitoring' | 'agent'
 
 const consoleMode = ref<ConsoleMode>('automation')
 const mobileMenuOpen = ref(false)
@@ -32,7 +32,11 @@ const activeStep = ref(0)
 let timer: ReturnType<typeof setInterval> | undefined
 
 const base = (path: string) => withBase(path)
-const consoleTitle = computed(() => consoleMode.value === 'automation' ? '自动化流程' : '实时容器卡片监控')
+const consoleTitle = computed(() => {
+  if (consoleMode.value === 'automation') return '自动化流程'
+  if (consoleMode.value === 'monitoring') return '实时容器卡片监控'
+  return 'Agent 多节点管理'
+})
 
 const navItems = [
   { label: '安装教程', href: '/Installation' },
@@ -113,7 +117,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
           </div>
         </div>
 
-        <div class="dp-live-console">
+        <div :key="consoleMode" class="dp-live-console">
           <div class="dp-console-head">
             <div class="dp-window-mark"><i></i><i></i><i></i></div>
             <div class="dp-console-title"><span>DP / CONTROL</span><strong>{{ consoleTitle }}</strong></div>
@@ -123,6 +127,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
           <div class="dp-console-tabs" role="tablist" aria-label="控制台视图">
             <button type="button" :class="{ active: consoleMode === 'automation' }" @click="consoleMode = 'automation'">自动接管</button>
             <button type="button" :class="{ active: consoleMode === 'monitoring' }" @click="consoleMode = 'monitoring'">实时监控</button>
+            <button type="button" :class="{ active: consoleMode === 'agent' }" @click="consoleMode = 'agent'">Agent 节点</button>
           </div>
 
           <div v-if="consoleMode === 'automation'" class="dp-provision-view">
@@ -144,7 +149,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
             </div>
           </div>
 
-          <div v-else class="dp-monitor-view">
+          <div v-else-if="consoleMode === 'monitoring'" class="dp-monitor-view">
             <div class="dp-monitor-metrics">
               <div><Cpu :size="18" /><span>CPU</span><strong>12.4%</strong><i style="--value: 42%"></i></div>
               <div><Database :size="18" /><span>MEMORY</span><strong>1.82 GB</strong><i style="--value: 58%"></i></div>
@@ -155,6 +160,20 @@ onBeforeUnmount(() => timer && clearInterval(timer))
               <div><span><i class="is-green"></i> docker-panel</span><span>运行中</span><span>2.8%</span><span>286 MB</span></div>
               <div><span><i class="is-amber"></i> jellyfin</span><span>错误</span><span>0%</span><span>0 MB</span></div>
               <div><span><i class="is-red"></i> uptime-kuma</span><span>已停止</span><span>0%</span><span>0 MB</span></div>
+            </div>
+          </div>
+
+          <div v-else class="dp-agent-view">
+            <div class="dp-agent-metrics">
+              <div><Database :size="18" /><span>NODES</span><strong>3</strong><small>已接入</small></div>
+              <div><Activity :size="18" /><span>ONLINE</span><strong>2</strong><small>实时连接</small></div>
+              <div><Network :size="18" /><span>CONTAINERS</span><strong>28</strong><small>跨节点同步</small></div>
+            </div>
+            <div class="dp-agent-list">
+              <div class="dp-agent-list__head"><span>Agent 节点</span><span>状态</span><span>CPU</span><span>内存</span><span>上传</span><span>下载</span></div>
+              <div><span><i class="is-green"></i><b>阿里云 VPS</b><small>远程 Docker 节点</small></span><em data-label="状态">在线</em><code data-label="CPU">2.8%</code><code data-label="内存">684 MB</code><code data-label="上传">598 B/s</code><code data-label="下载">348 B/s</code></div>
+              <div><span><i class="is-green"></i><b>家庭 NAS</b><small>本地容器面板</small></span><em data-label="状态">在线</em><code data-label="CPU">6.1%</code><code data-label="内存">1.42 GB</code><code data-label="上传">1.2 KB/s</code><code data-label="下载">5.6 KB/s</code></div>
+              <div><span><i class="is-amber"></i><b>备用节点</b><small>等待连接</small></span><em class="is-waiting" data-label="状态">离线</em><code data-label="CPU">0%</code><code data-label="内存">0 MB</code><code data-label="上传">0 B/s</code><code data-label="下载">0 B/s</code></div>
             </div>
           </div>
 
