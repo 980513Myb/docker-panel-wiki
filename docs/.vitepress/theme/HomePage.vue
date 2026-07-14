@@ -4,6 +4,7 @@ import { withBase } from 'vitepress'
 import {
   Activity,
   ArrowRight,
+  Bell,
   Check,
   ChevronRight,
   CircleGauge,
@@ -62,7 +63,7 @@ const capabilities = [
   { title: '内外网智能切换', text: '支持自动、内网、外网三种访问模式；自动模式会根据当前网络环境选择对应访问地址。', icon: Network, tone: 'green' },
   { title: 'Agent 多节点管理', text: '接入远程 VPS 与 Docker 服务器，在同一面板统一查看节点、容器状态和资源。', icon: Database, tone: 'blue' },
   { title: '图标自动匹配', text: '根据容器名称、镜像名称与访问地址自动获取服务图标；未匹配时也可在后台手动替换。', icon: Image, tone: 'cyan' },
-  { title: '节点地址预输入', text: '可为本机和每个 Agent 节点分别预设内外网地址，新容器自动沿用对应规则。', icon: Network, tone: 'amber' }
+  { title: '消息通知中心', text: '集中配置 Telegram 与企业微信，按规则推送容器、更新、定时任务和 Agent 状态，并可直接更新或查看容器当前状态。', icon: Bell, tone: 'amber' }
 ]
 
 onMounted(() => {
