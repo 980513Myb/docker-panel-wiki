@@ -87,6 +87,50 @@ docker run -d \
   mouyanbin/docker-panel:latest
 ```
 
+## ARM64 Compose 部署
+
+适用于 Apple Silicon Mac、ARM64 NAS 或其他 ARM64 Docker 主机。将以下内容保存为 `docker-compose.yml` 后，在该文件所在目录执行 `docker compose up -d`。
+
+```yaml
+services:
+  panel:
+    image: mouyanbin/docker-panel:latest
+    platform: linux/arm64
+    pull_policy: always
+    container_name: docker-container-panel
+    restart: unless-stopped
+
+    ports:
+      - "9527:9527"
+
+    environment:
+      NODE_ENV: production
+      PORT: 9527
+      DATABASE_URL: file:/app/data/panel.db
+      INITIAL_ADMIN_USERNAME: admin
+      INITIAL_ADMIN_PASSWORD: password
+      SESSION_SECRET: "请替换成至少32位的随机字符串"
+      DOCKER_SOCKET: /var/run/docker.sock
+      AGENT_REQUIRE_HTTPS: "false"
+      DOCKER_COMPOSE_ROOTS: "/Users/你的Mac用户名/docker"
+
+    volumes:
+      - panel-data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/你的Mac用户名/docker:/Users/你的Mac用户名/docker:rw
+
+volumes:
+  panel-data:
+```
+
+::: warning ARM64 部署注意事项
+- `platform: linux/arm64` 仅用于 ARM64 主机；Intel/AMD64 主机请删除该行或改为 `linux/amd64`。
+- 将 `/Users/你的Mac用户名/docker` 替换为主机实际的 Compose 项目根目录，`DOCKER_COMPOSE_ROOTS` 与 `volumes` 中的路径必须完全一致。该目录未正确挂载时，面板无法扫描、编辑或删除 Compose 项目文件。
+- `INITIAL_ADMIN_USERNAME`、`INITIAL_ADMIN_PASSWORD` 和 `SESSION_SECRET` 应在首次启动前改为自己的安全值；首次初始化完成后，修改这两个初始账号变量不会重置已有管理员账户。
+- `AGENT_REQUIRE_HTTPS: "false"` 仅适合本地或受信任内网中允许 HTTP 的 Agent 接入。通过公网或反向代理部署时，建议配置 HTTPS 并移除该项或设为 `true`。
+- `panel-data` 是 Docker 命名卷，保存数据库和面板配置。迁移或备份时请同时备份该卷。
+:::
+
 ## 首次进入
 
 浏览器访问：
