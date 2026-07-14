@@ -354,19 +354,21 @@ Agent 用于把远程 VPS、NAS 或其他 Docker 服务器接入 Docker-Panel。
 
 ### 代理设置
 
-代理设置仅用于 Docker-Panel 检测容器镜像是否有新版本，以及测试 Docker Hub、GHCR、LSCR 的连通性。
+代理设置用于 Docker-Panel 检测容器镜像是否有新版本、测试 Docker Hub、GHCR、LSCR 的连通性，也用于 Telegram Bot API 的消息发送、测试通知、菜单同步、轮询和机器人交互。
 
 填写方式：
 
 - 普通代理：`http://host:port`
 - 带认证代理：`http://user:password@host:port`
-- 留空：使用直连检测。
+- 留空：Docker 更新检测与 Telegram 均使用直连。
 
-真正拉取镜像和升级容器的请求由 Docker daemon 发起。若拉取镜像失败，需要在 Docker daemon 或宿主机的 Docker 服务中单独配置代理。
+企业微信继续使用消息通知中心内单独配置的“微信代理 URL”，不使用此处代理。
+
+真正拉取镜像和升级容器的请求由 Docker daemon 发起。若拉取镜像失败，需要在 Docker daemon 或宿主机的 Docker 服务中单独配置代理；此处的代理仅影响面板检测与 Telegram 请求。
 
 保存后可点击“测试连通性”确认当前代理是否可用于更新检测。
 
-![代理设置 / Docker 更新检测代理](/assets/wiki/proxy-settings.png)
+![代理设置 / Docker 更新检测与 Telegram 代理](/assets/wiki/proxy-settings-v2.png)
 
 ### Docker 设置
 
