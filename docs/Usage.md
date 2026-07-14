@@ -283,6 +283,16 @@ Compose 项目页面用于按项目查看和维护服务。
 
 如果只想查看项目，目录可以只读挂载；如果要在线编辑 YAML，需要使用 `:rw`。
 
+::: info 删除 Compose 项目说明
+标准 Docker 没有可单独删除的“Compose 项目对象”。在面板中删除 Compose 项目，实际执行的是 `docker compose down`，会移除项目容器和项目网络，但保留 YAML 与项目配置文件。
+
+群晖“项目”列表是 DSM 自己的项目登记，不属于 Docker 标准对象。需要彻底清理时，可选择删除整个项目目录文件；如果只想停止并移除容器，则删除容器并保留项目配置即可。
+
+注意：`DOCKER_COMPOSE_ROOTS: "/vol1/1000/docker"` 必须替换为你主机实际的 Docker 项目根目录，并与对应的目录挂载保持一致；路径错误时，面板无法定位 Compose 文件，也无法删除 Compose 项目文件。
+
+同时建议使用 `/vol1/1000/docker:/vol1/1000/docker:rw` 将 NAS 中的 Compose 项目根目录映射进容器。`rw` 可用于扫描项目、在线编辑 YAML 和重建项目；如果写成 `ro`，面板只能读取，无法编辑 YAML 文件，推荐使用 `rw`。
+:::
+
 ![Compose 项目 / 项目列表](/assets/wiki/compose-projects-v2.png)
 
 ![Compose 项目 / 项目详情](/assets/wiki/compose-project-detail-v2.png)
