@@ -51,6 +51,7 @@ export default defineConfig({
             { text: '图标库', link: '/Usage#图标库' },
             { text: '代理设置', link: '/Usage#代理设置' },
             { text: 'Docker 设置', link: '/Usage#docker-设置' },
+            { text: '消息通知', link: '/Usage#消息通知' },
             { text: '系统操作', link: '/Usage#底部与系统操作' }
           ]
         }
