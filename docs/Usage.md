@@ -394,7 +394,7 @@ Docker 设置用于控制容器的更新检查、镜像自动升级与旧镜像�
 
 可按需开启异常停止与健康检查恢复、CPU 持续超限和内存持续超限，并设置 CPU/内存阈值、连续超限时间、最大尝试次数及失败冷却时间。系统只会对已选择的容器执行恢复；面板自身和手动停止的容器不会触发自动恢复。
 
-![Docker 设置 / 容器自动恢复](/assets/wiki/container-auto-recovery-v2.png)
+![Docker 设置 / 容器自动恢复](/assets/wiki/container-auto-recovery-v3.png)
 
 #### 旧镜像清理
 
