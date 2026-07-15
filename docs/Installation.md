@@ -181,15 +181,15 @@ docker logs --tail 100 docker-panel
 
 ## 支持开发
 
-Docker-Panel 当前完全免费提供使用。若它帮助你更轻松地管理 Docker 服务，欢迎自愿打赏开发者，感谢你的认可与支持。
+Docker-Panel 当前完全免费提供使用，也承诺以后永久免费使用，不收取任何费用。若它帮助你更轻松地管理 Docker 服务，欢迎自愿打赏开发者，感谢你的认可与支持。
 
 <div class="dp-support-grid">
   <figure>
     <figcaption>支付宝</figcaption>
-    <img src="/assets/wiki/support-alipay.jpg" alt="支付宝打赏二维码" />
+    <img src="/assets/wiki/support-alipay-qr-v2.png" alt="支付宝打赏二维码" />
   </figure>
   <figure>
     <figcaption>微信支付</figcaption>
-    <img src="/assets/wiki/support-wechat.jpg" alt="微信支付打赏二维码" />
+    <img src="/assets/wiki/support-wechat-qr-v2.png" alt="微信支付打赏二维码" />
   </figure>
 </div>
