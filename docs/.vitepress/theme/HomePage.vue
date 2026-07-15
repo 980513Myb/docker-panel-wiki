@@ -280,6 +280,17 @@ onBeforeUnmount(() => timer && clearInterval(timer))
           <a :href="base('/Troubleshooting')"><span>03</span><div><strong>故障自检</strong><small>按现象定位访问、识别、地址与更新问题</small></div><ArrowRight :size="20" /></a>
         </div>
       </section>
+
+      <section class="dp-special-thanks" aria-label="特别鸣谢">
+        <div class="dp-special-thanks__intro">
+          <span>07 / SPECIAL THANKS</span>
+          <h2>特别鸣谢</h2>
+        </div>
+        <div class="dp-special-thanks__person">
+          <img :src="base('/assets/wiki/special-thanks-avatar-v2.jpg')" alt="野菊花爆炒火腿肠头像" />
+          <strong>野菊花爆炒火腿肠</strong>
+        </div>
+      </section>
     </main>
 
     <footer class="dp-site-footer">
