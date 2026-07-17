@@ -189,7 +189,7 @@ Dashboard 显示配置可控制首页顶部内容：
 - 维护外部工具地址。
 - 把 Docker 服务和非 Docker 服务放在同一导航页。
 
-![集成服务 / NAS 接入配置](/assets/wiki/integrated-service-config.png)
+![集成服务 / NAS 接入配置](/assets/wiki/integrated-service-config-v2.png)
 
 ![集成服务 / 面板监控效果](/assets/wiki/integrated-service-dashboard.png)
 
