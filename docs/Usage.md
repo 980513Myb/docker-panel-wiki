@@ -193,6 +193,28 @@ Dashboard 显示配置可控制首页顶部内容：
 
 ![集成服务 / 面板监控效果](/assets/wiki/integrated-service-dashboard.png)
 
+### 面板监控
+
+面板监控是独立于集成服务的实时服务看板。它不会改变已有集成卡片，点击监控卡片也不会跳转服务地址；可直接在面板内查看服务数据并执行常用操作。
+
+主要功能：
+
+- 添加、编辑或删除监控卡片，并可选择自定义图标。
+- 支持拖动排序、自由调整卡片尺寸，卡片内容区域可独立滑动查看。
+- 桌面端和移动端分别保存卡片位置与大小；移动端可在排序状态下实时调整尺寸，保存或刷新后保持布局。
+- 页面保持可见时自动刷新服务数据；切换到后台或关闭浏览器后停止刷新，减少不必要的资源占用。
+- 卡片透明度跟随全局卡片透明度设置，小尺寸卡片会自动精简内容，避免文字和操作按钮重叠。
+
+目前可用于查看并操作 Emby、qBittorrent、Symedia 和 MoviePilot V2 等服务：例如查看 Emby 播放进度、qBittorrent 下载任务、Symedia 链接与归档任务，以及 MoviePilot V2 的订阅和下载队列。
+
+![面板监控 / 服务配置](/assets/wiki/panel-monitoring-config-v1.png)
+
+![面板监控 / 服务总览](/assets/wiki/panel-monitoring-summary-v1.png)
+
+![面板监控 / 完整监控看板](/assets/wiki/panel-monitoring-overview-v1.png)
+
+![面板监控 / 卡片详情](/assets/wiki/panel-monitoring-detail-v1.png)
+
 ### 搜索引擎
 
 搜索引擎用于配置 Docker-Panel 内置浏览器的网页搜索服务。
