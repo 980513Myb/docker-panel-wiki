@@ -4,7 +4,6 @@ import { withBase } from 'vitepress'
 import {
   Activity,
   ArrowRight,
-  Bell,
   Check,
   ChevronRight,
   CircleGauge,
@@ -22,6 +21,7 @@ import {
   RefreshCw,
   ServerCog,
   Sparkles,
+  Terminal,
   X
 } from '@lucide/vue'
 
@@ -63,7 +63,7 @@ const capabilities = [
   { title: '内外网智能切换', text: '支持自动、内网、外网三种访问模式；自动模式会根据当前网络环境选择对应访问地址。', icon: Network, tone: 'green' },
   { title: 'Agent 多节点管理', text: '接入远程 VPS 与 Docker 服务器，在同一面板统一查看节点、容器状态和资源。', icon: Database, tone: 'blue' },
   { title: '图标自动匹配', text: '根据容器名称、镜像名称与访问地址自动获取服务图标；未匹配时也可在后台手动替换。', icon: Image, tone: 'cyan' },
-  { title: '消息通知中心', text: '集中配置 Telegram 与企业微信，按规则推送容器、更新、定时任务和 Agent 状态，并可直接更新或查看容器当前状态。', icon: Bell, tone: 'amber' }
+  { title: 'SSH 终端管理', text: '集中保存主机 SSH 连接，直接建立终端会话执行命令、浏览远程文件，并同步查看主机资源状态。', icon: Terminal, tone: 'amber' }
 ]
 
 onMounted(() => {
@@ -266,13 +266,27 @@ onBeforeUnmount(() => timer && clearInterval(timer))
         </div>
         <div class="dp-screenshot-frame">
           <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / AGENT NODES</span></div>
-          <img class="dp-screenshot-image" :src="base('/assets/wiki/agent-nodes-v2.png')" alt="Docker-Panel Agent 多节点管理" />
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/agent-nodes-v3.png')" alt="Docker-Panel Agent 多节点管理" />
+        </div>
+      </section>
+
+      <section class="dp-screenshot-section dp-screenshot-section--backend">
+        <div class="dp-screenshot-frame">
+          <div class="dp-screenshot-frame__bar"><i></i><i></i><i></i><span>DOCKER-PANEL / SSH TERMINAL</span></div>
+          <img class="dp-screenshot-image" :src="base('/assets/wiki/ssh-terminal-home-v1.png')" alt="Docker-Panel SSH 终端管理" />
+        </div>
+        <div class="dp-screenshot-copy">
+          <span>06 / SSH TERMINAL</span>
+          <h2>SSH 终端管理</h2>
+          <p>在 Docker-Panel 内集中保存和管理主机 SSH 连接，直接建立终端会话执行命令、浏览远程文件，并查看连接主机的资源状态。</p>
+          <div><Check :size="15" /> 保存常用主机，测试连接后可快速打开多个终端会话</div>
+          <div><Check :size="15" /> 终端、命令与文件管理集中在同一工作区，减少工具切换</div>
         </div>
       </section>
 
       <section class="dp-docs-route">
         <header class="dp-section-intro dp-section-intro--light">
-          <span>06 / DOCUMENTATION</span>
+          <span>07 / DOCUMENTATION</span>
         </header>
         <div class="dp-doc-links">
           <a :href="base('/Installation')"><span>01</span><div><strong>安装教程</strong><small>Compose 部署、默认账户、目录挂载与安装验证</small></div><ArrowRight :size="20" /></a>
@@ -283,7 +297,7 @@ onBeforeUnmount(() => timer && clearInterval(timer))
 
       <section class="dp-special-thanks" aria-label="特别鸣谢">
         <div class="dp-special-thanks__intro">
-          <span>07 / SPECIAL THANKS</span>
+          <span>08 / SPECIAL THANKS</span>
           <h2>特别鸣谢</h2>
         </div>
         <div class="dp-special-thanks__person">

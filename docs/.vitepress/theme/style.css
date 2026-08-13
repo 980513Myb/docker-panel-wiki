@@ -1199,16 +1199,20 @@ button {
 }
 
 .dp-docs-route {
-  border-top: 1px solid rgba(169, 189, 210, 0.13);
-  background: #0b0f15;
+  border-top: 1px solid #d9e2e8;
+  background: #f7fafc;
 }
 
 .dp-docs-route .dp-section-intro--light > span {
-  color: var(--dp-cyan);
+  color: #0c91a2;
 }
 
 .dp-docs-route .dp-section-intro--light h2 {
-  color: #f1f5f8;
+  color: #13202b;
+}
+
+.dp-docs-route .dp-section-intro--light p {
+  color: #617384;
 }
 
 .dp-docs-route .dp-section-intro {
@@ -1224,8 +1228,8 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   margin-top: 50px;
-  border: 1px solid rgba(169, 189, 210, 0.16);
-  background: rgba(169, 189, 210, 0.16);
+  border: 1px solid #d7e1e8;
+  background: #d7e1e8;
 }
 
 .dp-doc-links a {
@@ -1235,12 +1239,12 @@ button {
   align-items: center;
   min-height: 140px;
   padding: 25px;
-  background: #101720;
+  background: #ffffff;
   transition: background 160ms ease;
 }
 
 .dp-doc-links a:hover {
-  background: #15232b;
+  background: #edf9fa;
 }
 
 .dp-doc-links a > span {
@@ -1255,19 +1259,19 @@ button {
 }
 
 .dp-doc-links strong {
-  color: #eef4f8;
+  color: #1b2a36;
   font-size: 16px;
 }
 
 .dp-doc-links small {
   margin-top: 8px;
-  color: #91a2b1;
+  color: #627483;
   font-size: 11px;
   line-height: 1.55;
 }
 
 .dp-doc-links svg {
-  color: #7f92a2;
+  color: #6c8190;
   transition: color 160ms ease, transform 160ms ease;
 }
 
