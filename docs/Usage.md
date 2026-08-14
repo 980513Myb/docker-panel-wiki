@@ -389,21 +389,28 @@ SSH 终端用于在 Docker-Panel 内集中管理主机 SSH 连接。无需离开
 
 ### 代理设置
 
-代理设置用于 Docker-Panel 检测容器镜像是否有新版本、测试 Docker Hub、GHCR、LSCR 的连通性，也用于 Telegram Bot API 的消息发送、测试通知、菜单同步、轮询和机器人交互。
+代理设置用于 Docker-Panel 的镜像版本检测、Telegram 消息与机器人交互，也用于 NAS Docker 原生拉取失败后的 DP 兜底镜像下载。
 
 填写方式：
 
 - 普通代理：`http://host:port`
 - 带认证代理：`http://user:password@host:port`
-- 留空：Docker 更新检测与 Telegram 均使用直连。
+- 留空：Docker 更新检测、Telegram 与兜底下载均使用直连。
 
 企业微信继续使用消息通知中心内单独配置的“微信代理 URL”，不使用此处代理。
 
-真正拉取镜像和升级容器的请求由 Docker daemon 发起。若拉取镜像失败，需要在 Docker daemon 或宿主机的 Docker 服务中单独配置代理；此处的代理仅影响面板检测与 Telegram 请求。
+保存后可点击“测试代理”，确认当前地址可用于镜像版本检测与 Telegram 请求；代理不可用时不会写入升级日志。
 
-保存后可点击“测试连通性”确认当前代理是否可用于更新检测。
+#### 自定义镜像源与 DP 兜底拉取
 
-![代理设置 / Docker 更新检测与 Telegram 代理](/assets/wiki/proxy-settings-v2.png)
+当 NAS 的 Docker 原生拉取因网络问题失败时，开启“启用 DP 兜底拉取”后，面板会按列表从上到下依次尝试自定义 Docker Hub 镜像源下载镜像。
+
+- 每个镜像源可单独命名、调整顺序、测试或删除。
+- “新增镜像源”可添加自建或公共镜像地址；“恢复默认”会还原内置镜像源列表。
+- “并行测试全部”可快速检查所有镜像源的当前连通性，建议先测试再保存。
+- 兜底拉取仅在 Docker 原生拉取失败时启用，不会替代宿主机 Docker 的正常拉取流程。
+
+![代理设置 / 更新检测、Telegram 与镜像源兜底拉取](/assets/wiki/proxy-settings-v3.png)
 
 ### Docker 设置
 
