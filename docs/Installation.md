@@ -107,8 +107,6 @@ services:
       NODE_ENV: production
       PORT: 9527
       DATABASE_URL: file:/app/data/panel.db
-      INITIAL_ADMIN_USERNAME: admin
-      INITIAL_ADMIN_PASSWORD: password
       SESSION_SECRET: "请替换成至少32位的随机字符串"
       DOCKER_SOCKET: /var/run/docker.sock
       AGENT_REQUIRE_HTTPS: "false"
@@ -126,7 +124,7 @@ volumes:
 ::: warning ARM64 部署注意事项
 - `platform: linux/arm64` 仅用于 ARM64 主机；Intel/AMD64 主机请删除该行或改为 `linux/amd64`。
 - 将 `/Users/你的Mac用户名/docker` 替换为主机实际的 Compose 项目根目录，`DOCKER_COMPOSE_ROOTS` 与 `volumes` 中的路径必须完全一致。该目录未正确挂载时，面板无法扫描、编辑或删除 Compose 项目文件。
-- `INITIAL_ADMIN_USERNAME`、`INITIAL_ADMIN_PASSWORD` 和 `SESSION_SECRET` 应在首次启动前改为自己的安全值；首次初始化完成后，修改这两个初始账号变量不会重置已有管理员账户。
+- 面板默认首次登录账户为 `admin`、密码为 `password`。管理员账户创建后会保存在 `panel-data` 中；不要在 YAML 中额外设置初始账号变量，以免误以为修改后可重置已有登录信息。
 - `AGENT_REQUIRE_HTTPS: "false"` 仅适合本地或受信任内网中允许 HTTP 的 Agent 接入。通过公网或反向代理部署时，建议配置 HTTPS 并移除该项或设为 `true`。
 - `panel-data` 是 Docker 命名卷，保存数据库和面板配置。迁移或备份时请同时备份该卷。
 :::
