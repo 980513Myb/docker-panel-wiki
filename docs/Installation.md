@@ -175,7 +175,9 @@ docker logs --tail 100 docker-panel
 
 获取 Docker-Panel 的版本更新、功能公告和使用交流信息：
 
-[加入 Docker-Panel Telegram 频道](https://t.me/+w2PSTtftX4A4NGY9)
+[加入 Docker-Panel Telegram 频道](https://t.me/docker_Panel_TG)
+
+![Docker-Panel Telegram 频道二维码](/assets/wiki/telegram-channel-qr-v3.png)
 
 ## 支持开发
 

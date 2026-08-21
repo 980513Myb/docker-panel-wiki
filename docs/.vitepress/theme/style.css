@@ -1949,6 +1949,16 @@ button {
   transform: scale(1.008);
 }
 
+.vp-doc p:has(> img[alt="Docker-Panel Telegram 频道二维码"]) {
+  margin: 20px 0 28px;
+}
+
+.vp-doc img[alt="Docker-Panel Telegram 频道二维码"] {
+  display: block;
+  width: min(280px, 100%);
+  height: auto;
+}
+
 @media (max-width: 1120px) {
   .dp-desktop-nav { gap: 20px; }
   .dp-stage {
