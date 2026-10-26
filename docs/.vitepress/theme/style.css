@@ -1419,6 +1419,18 @@ button {
   font-size: 19px;
 }
 
+.dp-usage-page .vp-doc h3[id] {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.dp-usage-page .vp-doc h4[id] {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--vp-c-divider);
+}
+
 .vp-doc p,
 .vp-doc li {
   line-height: 1.85;

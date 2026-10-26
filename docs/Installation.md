@@ -146,7 +146,7 @@ http://NAS-IP:9527
 
 登录 Docker-Panel 后台后，面板会开始读取容器、镜像、端口和 Compose 项目信息。建议登录后尽快修改默认密码，避免长期使用公开默认密码。
 
-![首次访问 / 默认管理员登录](/assets/wiki/first-login.png)
+![首次访问 / 默认管理员登录](/assets/wiki/first-login-v2.png)
 
 ## 挂载说明
 
