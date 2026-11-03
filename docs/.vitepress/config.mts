@@ -40,22 +40,7 @@ export default defineConfig({
           items: [
             { text: '总体工作方式', link: '/Usage#总体工作方式' },
             { text: '前端导航页', link: '/Usage#前端导航页' },
-            { text: '自动地址', link: '/Usage#自动地址' },
-            { text: '容器卡片管理', link: '/Usage#容器卡片管理' },
-            { text: '后端容器面板', link: '/Usage#后端容器面板' },
-            { text: '容器管理', link: '/Usage#容器管理' },
-            { text: 'Compose 项目', link: '/Usage#compose-项目' },
-            { text: '定时重启', link: '/Usage#定时重启' },
-            { text: '镜像管理', link: '/Usage#镜像管理' },
-            { text: 'Agent 节点管理', link: '/Usage#agent-节点管理' },
-            { text: 'SSH 终端', link: '/Usage#ssh-终端' },
-            { text: '挂载检查', link: '/Usage#挂载检查' },
-            { text: '图标库', link: '/Usage#图标库' },
-            { text: '代理设置', link: '/Usage#代理设置' },
-            { text: 'Docker 设置', link: '/Usage#docker-设置' },
-            { text: '安全中心', link: '/Usage#安全中心' },
-            { text: '消息通知', link: '/Usage#消息通知' },
-            { text: '系统操作', link: '/Usage#底部与系统操作' }
+            { text: '后端容器面板', link: '/Usage#后端容器面板' }
           ]
         }
       ],

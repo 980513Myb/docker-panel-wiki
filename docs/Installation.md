@@ -173,13 +173,13 @@ docker logs --tail 100 docker-panel
 
 ## Telegram 频道
 
-获取 Docker-Panel 的版本更新、功能公告和使用交流信息：
+获取 Docker-Panel 的版本更新与功能公告，参与使用交流、反馈问题或提出优化建议：
 
 [加入 Docker-Panel Telegram 频道](https://t.me/docker_Panel_TG)
 
-![Docker-Panel Telegram 频道二维码](/assets/wiki/telegram-channel-qr-v3.png)
+![Docker-Panel Telegram 频道二维码](/assets/wiki/telegram-channel-qr-v4.png)
 
-## 支持开发
+## 请作者喝杯奶茶 {#支持开发}
 
 Docker-Panel 当前完全免费提供使用，也承诺以后永久免费使用，不收取任何费用。若它帮助你更轻松地管理 Docker 服务，欢迎自愿打赏开发者，感谢你的认可与支持。
 
