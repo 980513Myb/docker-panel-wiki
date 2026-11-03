@@ -179,9 +179,9 @@ docker logs --tail 100 docker-panel
 
 ![Docker-Panel Telegram 频道二维码](/assets/wiki/telegram-channel-qr-v4.png)
 
-## 请作者喝杯奶茶 {#支持开发}
+## 支持开发
 
-Docker-Panel 当前完全免费提供使用，也承诺以后永久免费使用，不收取任何费用。若它帮助你更轻松地管理 Docker 服务，欢迎自愿打赏开发者，感谢你的认可与支持。
+Docker-Panel 当前完全免费提供使用，也承诺以后永久免费使用，不收取任何费用。若它帮助你更轻松地管理 Docker 服务，欢迎请作者喝杯奶茶，感谢你的认可与支持。
 
 <div class="dp-support-grid">
   <figure>
